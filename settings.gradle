@@ -1,0 +1,5 @@
+include ':app', ':slidingMenuLibrary'
+
+include ':viewPagerIndicatorLibrary'
+include ':library'
+include ':sample'
