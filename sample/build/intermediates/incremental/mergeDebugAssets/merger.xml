@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="unspecified"><source path="/home/caprin/ZhiHuiBeiJing/sample/build/intermediates/exploded-aar/ZhiHuiBeiJing/library/unspecified/assets"/></dataSet><dataSet config="main"><source path="/home/caprin/ZhiHuiBeiJing/sample/src/main/assets"/><source path="/home/caprin/ZhiHuiBeiJing/sample/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/home/caprin/ZhiHuiBeiJing/sample/src/debug/assets"/></dataSet></merger>
