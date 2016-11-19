@@ -5,8 +5,6 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.example.caprin.zhihuibeijing.Base.TabDetailPager;
-
 /**
  * Created by WD on 2016/11/15.
  */
