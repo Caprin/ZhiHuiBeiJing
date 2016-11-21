@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -19,7 +20,7 @@ import com.example.caprin.zhihuibeijing.R;
 /**
  * Created by caprin on 16-11-17.
  */
-public class RefreshListView extends ListView {
+public class RefreshListView extends ListView implements AbsListView.OnScrollListener {
     private int startY;
     private int mHeaderViewHeight;
     private int mCurrentState;
@@ -34,26 +35,34 @@ public class RefreshListView extends ListView {
     private TextView tvTime;
     private RotateAnimation animUp;
     private RotateAnimation animDown;
+    private View mFooterView;
+    private int mFooterViewHeight;
+    private boolean isLoadingMore;
+    private ProgressBar mFooterProgress;
 
     public RefreshListView(Context context) {
         super(context);
         initHeaderView();
+        initFooterView();
     }
 
     public RefreshListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initHeaderView();
+        initFooterView();
     }
 
     public RefreshListView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initHeaderView();
+        initFooterView();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public RefreshListView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initHeaderView();
+        initFooterView();
     }
 
 
@@ -61,7 +70,7 @@ public class RefreshListView extends ListView {
         mHeaderView = View.inflate(getContext(), R.layout.refresh_header, null);
         this.addHeaderView(mHeaderView);
 
-        mHeaderView.measure(10, 10);
+        mHeaderView.measure(0, 0);
         mHeaderViewHeight = mHeaderView.getMeasuredHeight();
 
         mHeaderView.setPadding(0, -mHeaderViewHeight, 0, 0);
@@ -74,6 +83,22 @@ public class RefreshListView extends ListView {
         initArrowAnim();
 
 //        tvTime.setText("最后刷新时间：" + getCurrentTime());
+    }
+
+    private void initFooterView() {
+        mFooterView = View.inflate(getContext(), R.layout.news_foot_view, null);
+        this.addFooterView(mFooterView);
+
+        mFooterView.measure(0, 0);
+        mFooterViewHeight = mFooterView.getMeasuredHeight();
+
+        mFooterView.setPadding(0, -mFooterViewHeight, 0, 0);
+
+        mFooterProgress = (ProgressBar) mFooterView.findViewById(R.id.footer_progress);
+
+        mFooterProgress.setVisibility(VISIBLE);
+
+        this.setOnScrollListener(this);
     }
 
     @Override
@@ -181,25 +206,53 @@ public class RefreshListView extends ListView {
 
     public interface onRefreshListener {
         public void onRefresh();
+
+        public void onLoadMore();
     }
 
     public void onRefreshComplete(boolean success) {
-        mCurrentState = STATE_PULL_REFRESH;
-        tvTitle.setText("下拉刷新");
-        mProgress.setVisibility(INVISIBLE);
-        mArr.setVisibility(VISIBLE);
+        if (isLoadingMore) {
+            mFooterView.setPadding(0, -mFooterViewHeight, 0, 0);
+            isLoadingMore = false;
+        } else {
+            mCurrentState = STATE_PULL_REFRESH;
+            tvTitle.setText("下拉刷新");
+            mProgress.setVisibility(INVISIBLE);
+            mArr.setVisibility(VISIBLE);
 
-        mHeaderView.setPadding(0, -mHeaderViewHeight, 0, 0);
+            mHeaderView.setPadding(0, -mHeaderViewHeight, 0, 0);
 
-        if (success) {
-            tvTime.setText("最后刷新时间：" + getCurrentTime());
+            if (success) {
+//            tvTime.setText("最后刷新时间：" + getCurrentTime());
+            }
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.N)
-    public String getCurrentTime() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return format.format(new java.util.Date());
+//    @TargetApi(Build.VERSION_CODES.N)
+//    public String getCurrentTime() {
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        return format.format(new java.util.Date());
+//    }
+
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+        if (scrollState == SCROLL_STATE_FLING || scrollState == SCROLL_STATE_IDLE) {
+            if (getLastVisiblePosition() == getCount() - 1 && !isLoadingMore) {
+                mFooterView.setPadding(0, 0, 0, 0);
+                setSelection(getCount() - 1);
+
+                isLoadingMore = true;
+
+                if (mListener != null) {
+                    mListener.onLoadMore();
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
     }
 
 }

@@ -3,6 +3,7 @@ package com.example.caprin.zhihuibeijing.Base;
 import android.app.Activity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -51,6 +52,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
     private RefreshListView lvList;
 
     private ArrayList<TabData.TabNewsData> mNewsList;
+    private String mMoreUrl;
+    private NewsAdapter mNewsAdapter;
 
     public TabDetailPager(Activity activity, NewsData.NewsTabData newsTabData) {
         super(activity);
@@ -82,6 +85,16 @@ public class TabDetailPager extends BaseMenuDetailPager {
             @Override
             public void onRefresh() {
                 getDataFromServer();
+            }
+
+            @Override
+            public void onLoadMore() {
+                if (mMoreUrl != null) {
+                    getMoreDataFromServer();
+                } else {
+                    Toast.makeText(mActivity,"最后一页了",Toast.LENGTH_SHORT).show();
+                    lvList.onRefreshComplete(false);
+                }
             }
         });
 
@@ -116,7 +129,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
             @Override
             public void onSuccess(ResponseInfo<String> responseInfo) {
                 String result = responseInfo.result;
-                parseData(result);
+                parseData(result, false);
 
                 lvList.onRefreshComplete(true);
             }
@@ -126,27 +139,63 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 Toast.makeText(mActivity, s, Toast.LENGTH_SHORT).show();
                 e.getStackTrace();
 
-                lvList.onRefreshComplete(true);
+                lvList.onRefreshComplete(false);
             }
         });
     }
 
-    private void parseData(String result) {
+    private void getMoreDataFromServer() {
+        HttpUtils utils = new HttpUtils();
+        utils.send(HttpRequest.HttpMethod.GET, mMoreUrl, new RequestCallBack<String>() {
+            @Override
+            public void onSuccess(ResponseInfo<String> responseInfo) {
+                String result = responseInfo.result;
+                parseData(result, true);
+
+                lvList.onRefreshComplete(true);
+            }
+
+            @Override
+            public void onFailure(HttpException e, String s) {
+                Toast.makeText(mActivity, s, Toast.LENGTH_SHORT).show();
+                e.getStackTrace();
+
+                lvList.onRefreshComplete(false);
+            }
+        });
+    }
+
+    private void parseData(String result, boolean isMore) {
         Gson gson = new Gson();
         mTabDetailData = gson.fromJson(result, TabData.class);
 
-        mViewpager.setAdapter(new TopNewsAdapter());
+        String more = mTabDetailData.data.more;
+        if (!TextUtils.isEmpty(more)) {
+            mMoreUrl = GlobalConstants.SERVER_URL + more;
+        } else {
+            mMoreUrl = null;
+        }
 
-        mNewsList = mTabDetailData.data.news;
+        if (!isMore) {
+            mViewpager.setAdapter(new TopNewsAdapter());
 
-        lvList.setAdapter(new NewsAdapter());
+            mNewsList = mTabDetailData.data.news;
 
-        tvTitle.setText(mTabDetailData.data.topnews.get(0).title);
+            mNewsAdapter = new NewsAdapter();
 
-        indicator.setViewPager(mViewpager);
-        indicator.setSnap(true);
+            lvList.setAdapter(mNewsAdapter);
 
-        indicator.onPageSelected(0);
+            tvTitle.setText(mTabDetailData.data.topnews.get(0).title);
+
+            indicator.setViewPager(mViewpager);
+            indicator.setSnap(true);
+
+            indicator.onPageSelected(0);
+        } else {
+            ArrayList<TabData.TabNewsData> news = mTabDetailData.data.news;
+            mNewsList.addAll(news);
+            mNewsAdapter.notifyDataSetChanged();
+        }
     }
 
     class TopNewsAdapter extends PagerAdapter {
