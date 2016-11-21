@@ -1,11 +1,14 @@
 package com.example.caprin.zhihuibeijing.Base;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +18,7 @@ import com.example.caprin.zhihuibeijing.R;
 import com.example.caprin.zhihuibeijing.domain.NewsData;
 import com.example.caprin.zhihuibeijing.domain.TabData;
 import com.example.caprin.zhihuibeijing.global.GlobalConstants;
+import com.example.caprin.zhihuibeijing.utils.PrefUtils;
 import com.example.caprin.zhihuibeijing.view.RefreshListView;
 import com.google.gson.Gson;
 import com.lidroid.xutils.BitmapUtils;
@@ -55,6 +59,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
     private String mMoreUrl;
     private NewsAdapter mNewsAdapter;
 
+    private static final String TAG = "onitemclik";
+
     public TabDetailPager(Activity activity, NewsData.NewsTabData newsTabData) {
         super(activity);
         mTabData = newsTabData;
@@ -92,9 +98,25 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 if (mMoreUrl != null) {
                     getMoreDataFromServer();
                 } else {
-                    Toast.makeText(mActivity,"最后一页了",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mActivity, "最后一页了", Toast.LENGTH_SHORT).show();
                     lvList.onRefreshComplete(false);
                 }
+            }
+        });
+
+        lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String ids = PrefUtils.getString(mActivity, "read_ids", "");
+                String readId = mNewsList.get(position).id;
+                if (!ids.contains(readId)) {
+                    ids = ids + readId + ",";
+                    PrefUtils.setString(mActivity, "read_ids", ids);
+                }
+
+                Log.d(TAG, "read_ids = " + ids);
+                changeReadState(view);
+
             }
         });
 
@@ -116,6 +138,11 @@ public class TabDetailPager extends BaseMenuDetailPager {
             }
         });
         return view;
+    }
+
+    private void changeReadState(View view) {
+        TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
+        tvTitle.setTextColor(Color.GRAY);
     }
 
     @Override
@@ -277,6 +304,12 @@ public class TabDetailPager extends BaseMenuDetailPager {
             holder.tvTitle.setText(item.title);
 
             utils.display(holder.tvPic, item.listimage);
+            String ids = PrefUtils.getString(mActivity, "read_ids", "");
+            if (ids.contains(mNewsList.get(i).id)) {
+                tvTitle.setTextColor(Color.GRAY);
+            } else {
+                tvTitle.setTextColor(Color.BLACK);
+            }
 
             return view;
         }

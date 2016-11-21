@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -20,7 +21,7 @@ import com.example.caprin.zhihuibeijing.R;
 /**
  * Created by caprin on 16-11-17.
  */
-public class RefreshListView extends ListView implements AbsListView.OnScrollListener {
+public class RefreshListView extends ListView implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener {
     private int startY;
     private int mHeaderViewHeight;
     private int mCurrentState;
@@ -255,4 +256,19 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
 
     }
 
+    OnItemClickListener mItemClickListener;
+
+    @Override
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        super.setOnItemClickListener(listener);
+
+        mItemClickListener = listener;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (mItemClickListener != null) {
+            mItemClickListener.onItemClick(parent, view, position - getHeaderViewsCount(), id);
+        }
+    }
 }
