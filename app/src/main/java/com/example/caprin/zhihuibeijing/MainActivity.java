@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.caprin.zhihuibeijing.Fragment.ContentFragment;

@@ -1,6 +1,7 @@
 package com.example.caprin.zhihuibeijing.Base;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.caprin.zhihuibeijing.R;
+import com.example.caprin.zhihuibeijing.WebViewActivity;
 import com.example.caprin.zhihuibeijing.domain.NewsData;
 import com.example.caprin.zhihuibeijing.domain.TabData;
 import com.example.caprin.zhihuibeijing.global.GlobalConstants;
@@ -119,6 +121,10 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 Log.d(TAG, "read_ids = " + ids);
                 changeReadState(view);
 
+                Intent intent = new Intent();
+                intent.setClass(mActivity, WebViewActivity.class);
+                intent.putExtra("url", mNewsList.get(position).url);
+                mActivity.startActivity(intent);
             }
         });
 
