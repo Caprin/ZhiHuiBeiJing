@@ -107,6 +107,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
         lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d(TAG, "onClickPosition: " + position);
                 String ids = PrefUtils.getString(mActivity, "read_ids", "");
                 String readId = mNewsList.get(position).id;
                 if (!ids.contains(readId)) {
@@ -114,6 +115,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
                     PrefUtils.setString(mActivity, "read_ids", ids);
                 }
 
+//                mNewsAdapter.notifyDataSetChanged();
                 Log.d(TAG, "read_ids = " + ids);
                 changeReadState(view);
 
@@ -141,8 +143,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
     }
 
     private void changeReadState(View view) {
-        TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
-        tvTitle.setTextColor(Color.GRAY);
+        TextView listTitle = (TextView) view.findViewById(R.id.news_title);
+        listTitle.setTextColor(Color.GRAY);
     }
 
     @Override
@@ -305,10 +307,11 @@ public class TabDetailPager extends BaseMenuDetailPager {
 
             utils.display(holder.tvPic, item.listimage);
             String ids = PrefUtils.getString(mActivity, "read_ids", "");
+            Log.d(TAG, "getView read_ids" + ids);
             if (ids.contains(mNewsList.get(i).id)) {
-                tvTitle.setTextColor(Color.GRAY);
+                holder.tvTitle.setTextColor(Color.GRAY);
             } else {
-                tvTitle.setTextColor(Color.BLACK);
+                holder.tvTitle.setTextColor(Color.BLACK);
             }
 
             return view;

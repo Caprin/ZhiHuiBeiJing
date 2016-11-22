@@ -260,7 +260,7 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
 
     @Override
     public void setOnItemClickListener(OnItemClickListener listener) {
-        super.setOnItemClickListener(listener);
+        super.setOnItemClickListener(this);
 
         mItemClickListener = listener;
     }
