@@ -9,21 +9,21 @@
         android:layout_height="wrap_content"
         android:background="@drawable/title_red_bg">
 
-        <TextView
-            android:id="@+id/title_text"
+        <ImageButton
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:text="智慧北京"
-            android:textColor="#fff"
-            android:textSize="33sp"/>
+            android:layout_marginLeft="5dp"
+            android:background="@null"
+            android:src="@drawable/back"/>
 
         <ImageButton
             android:id="@+id/icon_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/icon_share"
             android:background="@drawable/icon_textsize"/>
 
@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
             android:background="@drawable/icon_share"/>
 
     </RelativeLayout>
@@ -46,6 +47,15 @@
             android:id="@+id/mWebview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
+        <ProgressBar
+            android:id="@+id/webprogress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateDrawable="@drawable/custom_progress"
+            android:visibility="invisible"
+            />
 
     </FrameLayout>
 
