@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:background="@null"
-            android:src="@drawable/back"/>
+            android:src="@drawable/back" />
 
         <ImageButton
             android:id="@+id/icon_text"
@@ -25,7 +25,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/icon_share"
-            android:background="@drawable/icon_textsize"/>
+            android:background="@drawable/icon_textsize" />
 
         <ImageButton
             android:id="@+id/icon_share"
@@ -34,7 +34,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:background="@drawable/icon_share"/>
+            android:background="@drawable/icon_share" />
 
     </RelativeLayout>
 
@@ -46,7 +46,7 @@
         <WebView
             android:id="@+id/mWebview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <ProgressBar
             android:id="@+id/webprogress"
@@ -54,8 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:indeterminateDrawable="@drawable/custom_progress"
-            android:visibility="invisible"
-            />
+            android:visibility="invisible" />
 
     </FrameLayout>
 
