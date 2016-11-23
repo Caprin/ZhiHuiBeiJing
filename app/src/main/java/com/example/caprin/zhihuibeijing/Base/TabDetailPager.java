@@ -3,6 +3,8 @@ package com.example.caprin.zhihuibeijing.Base;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
@@ -63,6 +65,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
     private NewsAdapter mNewsAdapter;
 
     private static final String TAG = "onitemclik";
+
+    private Handler mHandler;
 
     public TabDetailPager(Activity activity, NewsData.NewsTabData newsTabData) {
         super(activity);
@@ -237,6 +241,27 @@ public class TabDetailPager extends BaseMenuDetailPager {
             ArrayList<TabData.TabNewsData> news = mTabDetailData.data.news;
             mNewsList.addAll(news);
             mNewsAdapter.notifyDataSetChanged();
+        }
+
+        if (mHandler == null) {
+            mHandler = new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    if (msg.what == 0) {
+                        int mCurrentItem = mViewpager.getCurrentItem();
+
+                        if (mCurrentItem < mTabDetailData.data.topnews.size() - 1) {
+                            mCurrentItem++;
+                        } else {
+                            mCurrentItem = 0;
+                        }
+                        mViewpager.setCurrentItem(mCurrentItem);
+                        mHandler.sendEmptyMessageDelayed(0, 3000);
+                    }
+                }
+            };
+
+            mHandler.sendEmptyMessageDelayed(0, 1500);
         }
     }
 
