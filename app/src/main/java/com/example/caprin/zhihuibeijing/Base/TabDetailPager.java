@@ -20,6 +20,7 @@ import com.example.caprin.zhihuibeijing.WebViewActivity;
 import com.example.caprin.zhihuibeijing.domain.NewsData;
 import com.example.caprin.zhihuibeijing.domain.TabData;
 import com.example.caprin.zhihuibeijing.global.GlobalConstants;
+import com.example.caprin.zhihuibeijing.utils.CacheUtils;
 import com.example.caprin.zhihuibeijing.utils.PrefUtils;
 import com.example.caprin.zhihuibeijing.view.RefreshListView;
 import com.google.gson.Gson;
@@ -101,7 +102,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
                     getMoreDataFromServer();
                 } else {
                     Toast.makeText(mActivity, "最后一页了", Toast.LENGTH_SHORT).show();
-                    lvList.onRefreshComplete(false);
+                    lvList.onLoadMoreComplete(true);
                 }
             }
         });
@@ -155,6 +156,10 @@ public class TabDetailPager extends BaseMenuDetailPager {
 
     @Override
     public void initData() {
+        String cache = CacheUtils.getCache(mActivity, mURL);
+        if (!TextUtils.isEmpty(cache)) {
+            parseData(cache, false);
+        }
         getDataFromServer();
     }
 
@@ -165,6 +170,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
             public void onSuccess(ResponseInfo<String> responseInfo) {
                 String result = responseInfo.result;
                 parseData(result, false);
+
+                CacheUtils.setCache(mActivity, mURL, result);
 
                 lvList.onRefreshComplete(true);
             }
@@ -187,7 +194,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 String result = responseInfo.result;
                 parseData(result, true);
 
-                lvList.onRefreshComplete(true);
+                lvList.onLoadMoreComplete(true);
             }
 
             @Override
@@ -195,7 +202,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 Toast.makeText(mActivity, s, Toast.LENGTH_SHORT).show();
                 e.getStackTrace();
 
-                lvList.onRefreshComplete(false);
+                lvList.onLoadMoreComplete(false);
             }
         });
     }

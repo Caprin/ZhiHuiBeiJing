@@ -21,7 +21,8 @@ import com.example.caprin.zhihuibeijing.R;
 /**
  * Created by caprin on 16-11-17.
  */
-public class RefreshListView extends ListView implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener {
+public class RefreshListView extends ListView implements AbsListView.OnScrollListener,
+        AdapterView.OnItemClickListener {
     private int startY;
     private int mHeaderViewHeight;
     private int mCurrentState;
@@ -212,20 +213,20 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
     }
 
     public void onRefreshComplete(boolean success) {
-        if (isLoadingMore) {
-            mFooterView.setPadding(0, -mFooterViewHeight, 0, 0);
-            isLoadingMore = false;
-        } else {
+        if (success) {
             mCurrentState = STATE_PULL_REFRESH;
             tvTitle.setText("下拉刷新");
             mProgress.setVisibility(INVISIBLE);
             mArr.setVisibility(VISIBLE);
-
             mHeaderView.setPadding(0, -mHeaderViewHeight, 0, 0);
-
-            if (success) {
 //            tvTime.setText("最后刷新时间：" + getCurrentTime());
-            }
+        }
+    }
+
+    public void onLoadMoreComplete(boolean success) {
+        if (success) {
+            mFooterView.setPadding(0, -mFooterViewHeight, 0, 0);
+            isLoadingMore = false;
         }
     }
 
@@ -252,7 +253,8 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
     }
 
     @Override
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int
+            totalItemCount) {
 
     }
 
