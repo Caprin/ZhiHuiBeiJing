@@ -9,6 +9,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -290,6 +291,8 @@ public class TabDetailPager extends BaseMenuDetailPager {
             utils.display(image, mTabDetailData.data.topnews.get(position).topimage);
 
             container.addView(image);
+
+            image.setOnTouchListener(new TopNewsTouchListener());
             return image;
         }
 
@@ -353,6 +356,27 @@ public class TabDetailPager extends BaseMenuDetailPager {
             }
 
             return view;
+        }
+    }
+
+    class TopNewsTouchListener implements View.OnTouchListener {
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    mHandler.removeCallbacksAndMessages(null);
+                    break;
+                case MotionEvent.ACTION_CANCEL:
+                    mHandler.sendEmptyMessageDelayed(0, 3000);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    mHandler.sendEmptyMessageDelayed(0, 3000);
+                    break;
+                default:
+                    break;
+            }
+            return true;
         }
     }
 
