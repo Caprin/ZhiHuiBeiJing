@@ -8,4 +8,6 @@ public class GlobalConstants {
     public static final String SERVER_URL = "http://10.79.36.51:8080/zhbj";
 
     public static final String CATEGORIES_URL = SERVER_URL + "/categories.json";
+
+    public static final String PHOTOS_URL = SERVER_URL + "photos/photos_1.json";
 }
