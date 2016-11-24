@@ -12,3 +12,4 @@
 /slidingMenuLibrary/build
 /viewPagerIndicatorLibrary/build
 /.idea/vcs.xml
+app/src/main/java/com/example/caprin/zhihuibeijing/global/GlobalConstants.java
