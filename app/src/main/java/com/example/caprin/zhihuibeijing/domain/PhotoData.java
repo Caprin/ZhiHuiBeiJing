@@ -7,8 +7,8 @@ import java.util.ArrayList;
  */
 
 public class PhotoData {
-    private PhotoDetailData data;
-    private int retcode;
+    public PhotoDetailData data;
+    public int retcode;
 
     public class PhotoDetailData {
         public String countcommenturl;

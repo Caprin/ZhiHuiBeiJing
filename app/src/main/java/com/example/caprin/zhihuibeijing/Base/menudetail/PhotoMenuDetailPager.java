@@ -1,13 +1,15 @@
 package com.example.caprin.zhihuibeijing.Base.menudetail;
 
 import android.app.Activity;
-import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.caprin.zhihuibeijing.Base.BaseMenuDetailPager;
 import com.example.caprin.zhihuibeijing.R;
@@ -15,18 +17,25 @@ import com.example.caprin.zhihuibeijing.domain.PhotoData;
 import com.example.caprin.zhihuibeijing.global.GlobalConstants;
 import com.example.caprin.zhihuibeijing.utils.CacheUtils;
 import com.google.gson.Gson;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 
-import org.apache.http.protocol.HTTP;
+import java.util.ArrayList;
 
 /**
  * Created by WD on 2016/11/10.
  */
 public class PhotoMenuDetailPager extends BaseMenuDetailPager {
+    private ArrayList<PhotoData.dataNews> mPhotoList;
+    private PhotoData data;
+    private ListView lvPhoto;
+    private GridView gvPhoto;
+    private photoAdapter mAdapter;
+
     public PhotoMenuDetailPager(Activity activity) {
         super(activity);
     }
@@ -34,8 +43,8 @@ public class PhotoMenuDetailPager extends BaseMenuDetailPager {
     @Override
     public View initViews() {
         View view = View.inflate(mActivity, R.layout.menu_photo_pager, null);
-        ListView lvPhoto = (ListView) view.findViewById(R.id.lv_photo);
-        GridView gvPhoto = (GridView) view.findViewById(R.id.gv_photo);
+        lvPhoto = (ListView) view.findViewById(R.id.lv_photo);
+        gvPhoto = (GridView) view.findViewById(R.id.gv_photo);
 
         return view;
     }
@@ -56,39 +65,76 @@ public class PhotoMenuDetailPager extends BaseMenuDetailPager {
             @Override
             public void onSuccess(ResponseInfo<Object> responseInfo) {
                 parseData((String) responseInfo.result);
+
+                CacheUtils.setCache(mActivity, GlobalConstants.PHOTOS_URL, (String) responseInfo.result);
             }
 
             @Override
             public void onFailure(HttpException e, String s) {
-
+                Toast.makeText(mActivity, s, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void parseData(String result) {
         Gson gson = new Gson();
-        gson.fromJson(result, PhotoData.class);
+        data = gson.fromJson(result, PhotoData.class);
+
+        mPhotoList = data.data.news;
+
+        if (mPhotoList != null) {
+            mAdapter = new photoAdapter();
+            lvPhoto.setAdapter(mAdapter);
+            gvPhoto.setAdapter(mAdapter);
+        }
     }
 
-    class phtotAdapter extends BaseAdapter {
-        @Override
-        public int getCount() {
-            return 0;
+    class photoAdapter extends BaseAdapter {
+        private BitmapUtils utils;
+
+        public photoAdapter() {
+            utils = new BitmapUtils(mActivity);
         }
 
         @Override
-        public Object getItem(int position) {
-            return null;
+        public int getCount() {
+            return mPhotoList.size();
+        }
+
+        @Override
+        public PhotoData.dataNews getItem(int position) {
+            return mPhotoList.get(position);
         }
 
         @Override
         public long getItemId(int position) {
-            return 0;
+            return position;
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder;
+            if (convertView == null) {
+                holder = new ViewHolder();
+                convertView = View.inflate(mActivity, R.layout.photo_list_item, null);
+                holder.mTitle = (TextView) convertView.findViewById(R.id.photo_title);
+                holder.mPic = (ImageView) convertView.findViewById(R.id.photo_pic);
+
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            PhotoData.dataNews item = getItem(position);
+            holder.mTitle.setText(item.title);
+
+            utils.display(holder.mPic, item.listimage);
             return null;
         }
+    }
+
+    class ViewHolder {
+        public ImageView mPic;
+        public TextView mTitle;
     }
 }
