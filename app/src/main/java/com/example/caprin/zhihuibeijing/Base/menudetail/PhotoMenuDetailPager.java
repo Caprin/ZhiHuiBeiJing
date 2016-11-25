@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,9 +36,19 @@ public class PhotoMenuDetailPager extends BaseMenuDetailPager {
     private ListView lvPhoto;
     private GridView gvPhoto;
     private photoAdapter mAdapter;
+    private ImageButton btnPhoto;
 
-    public PhotoMenuDetailPager(Activity activity) {
+    public PhotoMenuDetailPager(Activity activity, ImageButton btnPhoto) {
         super(activity);
+
+        this.btnPhoto = btnPhoto;
+
+        btnPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeDisplay();
+            }
+        });
     }
 
     @Override
@@ -136,5 +147,23 @@ public class PhotoMenuDetailPager extends BaseMenuDetailPager {
     class ViewHolder {
         public ImageView mPic;
         public TextView mTitle;
+    }
+
+    private boolean isListDisplay = true;
+
+    public void changeDisplay() {
+        if (isListDisplay) {
+            isListDisplay = false;
+            lvPhoto.setVisibility(View.VISIBLE);
+            gvPhoto.setVisibility(View.GONE);
+
+            btnPhoto.setImageResource(R.drawable.icon_pic_list_type);
+        } else {
+            isListDisplay = true;
+            lvPhoto.setVisibility(View.GONE);
+            gvPhoto.setVisibility(View.VISIBLE);
+
+            btnPhoto.setImageResource(R.drawable.icon_pic_grid_type);
+        }
     }
 }

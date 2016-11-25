@@ -16,7 +16,6 @@ import com.example.caprin.zhihuibeijing.MainActivity;
 import com.example.caprin.zhihuibeijing.domain.NewsData;
 import com.example.caprin.zhihuibeijing.global.GlobalConstants;
 import com.example.caprin.zhihuibeijing.utils.CacheUtils;
-import com.example.caprin.zhihuibeijing.utils.PrefUtils;
 import com.google.gson.Gson;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -115,7 +114,7 @@ public class NewsCenterPager extends BasePager {
 
         mPageList.add(new NewsMenuDetailPager(mActivity, mNewsData.data.get(0).children));
         mPageList.add(new TopicMenuDetailPager(mActivity));
-        mPageList.add(new PhotoMenuDetailPager(mActivity));
+        mPageList.add(new PhotoMenuDetailPager(mActivity, btnPhoto));
         mPageList.add(new InteractMenuDetailPager(mActivity));
 
         setCurrentMenuDetailPager(leftMenuFragment.mCurrentPos);
@@ -131,6 +130,12 @@ public class NewsCenterPager extends BasePager {
         tvTitle.setText(menuData.title);
 
         pager.initData();
+
+        if (pager instanceof PhotoMenuDetailPager) {
+            btnPhoto.setVisibility(View.VISIBLE);
+        } else {
+            btnPhoto.setVisibility(View.GONE);
+        }
     }
 }
 

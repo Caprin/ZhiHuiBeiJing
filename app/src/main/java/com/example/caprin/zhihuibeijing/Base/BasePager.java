@@ -24,6 +24,8 @@ public class BasePager {
 
     public ImageButton btnMenu;
 
+    public ImageButton btnPhoto;
+
     public BasePager(Activity activity) {
         mActivity = activity;
         initViews();
@@ -39,6 +41,8 @@ public class BasePager {
         btnMenu = (ImageButton) mRootView.findViewById(R.id.btn_menu);
 
         btnMenu.setVisibility(View.GONE);
+
+        btnPhoto = mRootView.findViewById(R.id.btn_photo);
     }
 
     public void initData() {
