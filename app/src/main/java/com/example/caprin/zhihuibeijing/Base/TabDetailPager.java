@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -68,6 +69,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
     private static final String TAG = "onitemclik";
 
     private Handler mHandler;
+    private ArrayList<TabData.TopNewsData> mTopNewsList;
 
     public TabDetailPager(Activity activity, NewsData.NewsTabData newsTabData) {
         super(activity);
@@ -107,7 +109,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
                     getMoreDataFromServer();
                 } else {
                     Toast.makeText(mActivity, "最后一页了", Toast.LENGTH_SHORT).show();
-                    lvList.onLoadMoreComplete(true);
+                    lvList.onRefreshComplete(false);
                 }
             }
         });
@@ -123,7 +125,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
                     PrefUtils.setString(mActivity, "read_ids", ids);
                 }
 
-//                mNewsAdapter.notifyDataSetChanged();
+                mNewsAdapter.notifyDataSetChanged();
                 Log.d(TAG, "read_ids = " + ids);
                 changeReadState(view);
 
@@ -199,7 +201,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 String result = responseInfo.result;
                 parseData(result, true);
 
-                lvList.onLoadMoreComplete(true);
+                lvList.onRefreshComplete(true);
             }
 
             @Override
@@ -207,7 +209,7 @@ public class TabDetailPager extends BaseMenuDetailPager {
                 Toast.makeText(mActivity, s, Toast.LENGTH_SHORT).show();
                 e.getStackTrace();
 
-                lvList.onLoadMoreComplete(false);
+                lvList.onRefreshComplete(false);
             }
         });
     }
@@ -224,31 +226,26 @@ public class TabDetailPager extends BaseMenuDetailPager {
         }
 
         if (!isMore) {
-            mViewpager.setAdapter(new TopNewsAdapter());
+            mTopNewsList = mTabDetailData.data.topnews;
 
             mNewsList = mTabDetailData.data.news;
 
-            mNewsAdapter = new NewsAdapter();
+            if (mTopNewsList != null) {
+                mViewpager.setAdapter(new TopNewsAdapter());
+                indicator.setViewPager(mViewpager);
+                indicator.setSnap(true);
 
-            lvList.setAdapter(mNewsAdapter);
-
-            tvTitle.setText(mTabDetailData.data.topnews.get(0).title);
-
-            indicator.setViewPager(mViewpager);
-            indicator.setSnap(true);
-
-            indicator.onPageSelected(0);
-        } else {
-            ArrayList<TabData.TabNewsData> news = mTabDetailData.data.news;
-            mNewsList.addAll(news);
-            mNewsAdapter.notifyDataSetChanged();
-        }
-
-        if (mHandler == null) {
-            mHandler = new Handler() {
-                @Override
-                public void handleMessage(Message msg) {
-                    if (msg.what == 0) {
+                indicator.onPageSelected(0);
+                tvTitle.setText(mTopNewsList.get(0).title);
+            }
+            if (mNewsList != null) {
+                mNewsAdapter = new NewsAdapter();
+                lvList.setAdapter(mNewsAdapter);
+            }
+            if (mHandler == null) {
+                mHandler = new Handler() {
+                    @Override
+                    public void handleMessage(Message msg) {
                         int mCurrentItem = mViewpager.getCurrentItem();
 
                         if (mCurrentItem < mTabDetailData.data.topnews.size() - 1) {
@@ -259,10 +256,14 @@ public class TabDetailPager extends BaseMenuDetailPager {
                         mViewpager.setCurrentItem(mCurrentItem);
                         mHandler.sendEmptyMessageDelayed(0, 3000);
                     }
-                }
-            };
+                };
 
-            mHandler.sendEmptyMessageDelayed(0, 1500);
+                mHandler.sendEmptyMessageDelayed(0, 3000);
+            }
+        } else {
+            ArrayList<TabData.TabNewsData> news = mTabDetailData.data.news;
+            mNewsList.addAll(news);
+            mNewsAdapter.notifyDataSetChanged();
         }
     }
 

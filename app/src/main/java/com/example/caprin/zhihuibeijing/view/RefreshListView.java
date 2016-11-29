@@ -2,8 +2,8 @@ package com.example.caprin.zhihuibeijing.view;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.icu.text.SimpleDateFormat;
 import android.os.Build;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.caprin.zhihuibeijing.Base.TabDetailPager;
 import com.example.caprin.zhihuibeijing.R;
 
 /**
@@ -213,22 +214,27 @@ public class RefreshListView extends ListView implements AbsListView.OnScrollLis
     }
 
     public void onRefreshComplete(boolean success) {
-        if (success) {
+        if (isLoadingMore) {
+            mFooterView.setPadding(0, -mFooterViewHeight, 0, 0);
+            isLoadingMore = false;
+        } else {
             mCurrentState = STATE_PULL_REFRESH;
             tvTitle.setText("下拉刷新");
             mProgress.setVisibility(INVISIBLE);
             mArr.setVisibility(VISIBLE);
             mHeaderView.setPadding(0, -mHeaderViewHeight, 0, 0);
-//            tvTime.setText("最后刷新时间：" + getCurrentTime());
+            if (success) {
+//                tvTime.setText("最后刷新时间：" + getCurrentTime());
+            }
         }
     }
 
-    public void onLoadMoreComplete(boolean success) {
-        if (success) {
-            mFooterView.setPadding(0, -mFooterViewHeight, 0, 0);
-            isLoadingMore = false;
-        }
-    }
+//    public void onLoadMoreComplete(boolean success) {
+//        if (success) {
+//            mFooterView.setPadding(0, -mFooterViewHeight, 0, 0);
+//            isLoadingMore = false;
+//        }
+//    }
 
 //    @TargetApi(Build.VERSION_CODES.N)
 //    public String getCurrentTime() {

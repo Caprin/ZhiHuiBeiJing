@@ -42,7 +42,7 @@ public class BasePager {
 
         btnMenu.setVisibility(View.GONE);
 
-        btnPhoto = mRootView.findViewById(R.id.btn_photo);
+        btnPhoto = (ImageButton) mRootView.findViewById(R.id.btn_photo);
     }
 
     public void initData() {

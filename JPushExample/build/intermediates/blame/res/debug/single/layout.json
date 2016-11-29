@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\layout\\push_set_dialog.xml",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\layout\\push_set_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\layout\\set_push_time.xml",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\layout\\set_push_time.xml"
+    },
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\layout\\customer_notitfication_layout_one.xml",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\layout\\customer_notitfication_layout_one.xml"
+    },
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\layout\\customer_notitfication_layout.xml",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\layout\\customer_notitfication_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\layout\\jpush_popwin_layout.xml",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\layout\\jpush_popwin_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\layout\\jpush_webview_layout.xml",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\layout\\jpush_webview_layout.xml"
+    }
+]

@@ -5,7 +5,7 @@ package com.example.caprin.zhihuibeijing.global;
  */
 public class GlobalConstants {
 
-    public static final String SERVER_URL = "http://10.79.36.51:8080/zhbj";
+    public static final String SERVER_URL = "http://192.168.1.103:8080/zhbj";
 
     public static final String CATEGORIES_URL = SERVER_URL + "/categories.json";
 

@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/JPushExample" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/sample" />
@@ -15,7 +16,17 @@
             <option value="$PROJECT_DIR$/viewPagerIndicatorLibrary" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/JPushExample" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/sample" />
+            <option value="$PROJECT_DIR$/slidingMenuLibrary" />
+            <option value="$PROJECT_DIR$/viewPagerIndicatorLibrary" />
+          </set>
+        </option>
       </GradleProjectSettings>
     </option>
   </component>

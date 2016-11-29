@@ -1,4 +1,4 @@
-include ':app', ':slidingMenuLibrary'
+include ':app', ':slidingMenuLibrary', ':JPushExample'
 
 include ':viewPagerIndicatorLibrary'
 include ':library'
