@@ -94,6 +94,7 @@ public class ContentFragment extends BaseFragment {
                 }
             }
         });
+        mPagerList.get(0).initData();
     }
 
     class contentAdapter extends PagerAdapter {

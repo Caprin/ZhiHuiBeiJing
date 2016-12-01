@@ -22,8 +22,8 @@ public class MainActivity extends SlidingActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         SlidingMenu slidingMenu = getSlidingMenu();
         setBehindContentView(R.layout.left_menu);
