@@ -1,5 +1,9 @@
 [
     {
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_launcher.png",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-ldpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-ldpi\\ic_launcher.png"
     }

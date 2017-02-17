@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\w4785\Desktop\ZhiHuiBeiJing\JPushExample\assets"/><source path="C:\Users\w4785\Desktop\ZhiHuiBeiJing\JPushExample\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\Users\w4785\Desktop\ZhiHuiBeiJing\JPushExample\build-types\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\AS_workspace\ZhiHuiBeiJing\JPushExample\assets"/><source path="E:\AS_workspace\ZhiHuiBeiJing\JPushExample\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="E:\AS_workspace\ZhiHuiBeiJing\JPushExample\build-types\debug\assets"/></dataSet></merger>

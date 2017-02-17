@@ -1,19 +1,11 @@
 [
     {
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\jpush_notification_icon.png",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\jpush_notification_icon.png"
+    },
+    {
         "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\border_bg.9.png",
         "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\border_bg.9.png"
-    },
-    {
-        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\jpush_notification_icon.png",
-        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\jpush_notification_icon.png"
-    },
-    {
-        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\top_bg.9.png",
-        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\top_bg.9.png"
-    },
-    {
-        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bottom_bg.9.png",
-        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\bottom_bg.9.png"
     },
     {
         "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\richpush_progressbar.xml",
@@ -24,27 +16,83 @@
         "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\richpush_btn_selector.xml"
     },
     {
-        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\stripes.png",
-        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\stripes.png"
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bottom_bg.9.png",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\bottom_bg.9.png"
     },
     {
         "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tiledstripes.xml",
-        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\tiledstripes.xml"
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\richpush_progressbar.xml",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\richpush_progressbar.xml"
     },
     {
-        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_richpush_actionbar_divider.png",
-        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\ic_richpush_actionbar_divider.png"
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_richpush_actionbar_divider.png",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\ic_richpush_actionbar_divider.png"
+    },
+    {
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_richpush_actionbar_back.png",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\ic_richpush_actionbar_back.png"
+    },
+    {
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tiledstripes.xml",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\tiledstripes.xml"
+    },
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\corners_bg.xml",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\corners_bg.xml"
+    },
+    {
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\corners_bg.xml",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\corners_bg.xml"
+    },
+    {
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\stripes.png",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\stripes.png"
+    },
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\bottom_bg.9.png",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\bottom_bg.9.png"
+    },
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\top_bg.9.png",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\top_bg.9.png"
+    },
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\jpush_notification_icon.png",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\jpush_notification_icon.png"
+    },
+    {
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\border_bg.9.png",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\border_bg.9.png"
+    },
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\stripes.png",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\stripes.png"
+    },
+    {
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\top_bg.9.png",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\top_bg.9.png"
+    },
+    {
+        "merged": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\richpush_btn_selector.xml",
+        "source": "E:\\AS_workspace\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\richpush_btn_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\tiledstripes.xml",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\tiledstripes.xml"
     },
     {
         "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_richpush_actionbar_back.png",
         "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\ic_richpush_actionbar_back.png"
     },
     {
-        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\corners_bg.xml",
-        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\corners_bg.xml"
+        "merged": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_richpush_actionbar_divider.png",
+        "source": "C:\\Users\\w4785\\Desktop\\ZhiHuiBeiJing\\JPushExample\\res\\drawable-hdpi\\ic_richpush_actionbar_divider.png"
     }
 ]
